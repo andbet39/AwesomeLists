@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>List Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Subcategory</th>
+      <th>List</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @list_entries.each do |list_entry| %>
+      <tr>
+        <td><%= list_entry.title %></td>
+        <td><%= list_entry.url %></td>
+        <td><%= list_entry.description %></td>
+        <td><%= list_entry.category %></td>
+        <td><%= list_entry.subcategory %></td>
+        <td><%= list_entry.list %></td>
+        <td><%= link_to 'Show', list_entry %></td>
+        <td><%= link_to 'Edit', edit_list_entry_path(list_entry) %></td>
+        <td><%= link_to 'Destroy', list_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New List Entry', new_list_entry_path %>
