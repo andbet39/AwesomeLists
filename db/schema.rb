@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107181734) do
+ActiveRecord::Schema.define(version: 20180108122611) do
 
   create_table "list_entries", force: :cascade do |t|
     t.string "title"
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 20180107181734) do
     t.boolean "parsed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "pushed_at"
+    t.string "readme_raw_path"
+    t.string "readme_view_path"
   end
 
   create_table "posts", force: :cascade do |t|

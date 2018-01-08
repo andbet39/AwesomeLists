@@ -41,6 +41,16 @@
     <%= form.check_box :parsed, id: :list_parsed %>
   </div>
 
+  <div class="field">
+    <%= form.label :pushed_at %>
+    <%= form.datetime_select :pushed_at, id: :list_pushed_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :readme_raw_path %>
+    <%= form.text_field :readme_raw_path, id: :list_readme_raw_path %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

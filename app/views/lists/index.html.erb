@@ -11,6 +11,8 @@
       <th>Description</th>
       <th>Stars</th>
       <th>Parsed</th>
+      <th>Pushed at</th>
+      <th>Readme raw path</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +26,8 @@
         <td><%= list.description %></td>
         <td><%= list.stars %></td>
         <td><%= list.parsed %></td>
+        <td><%= list.pushed_at %></td>
+        <td><%= list.readme_raw_path %></td>
         <td><%= link_to 'Show', list %></td>
         <td><%= link_to 'Edit', edit_list_path(list) %></td>
         <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>

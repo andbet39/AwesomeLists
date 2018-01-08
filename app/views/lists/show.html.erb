@@ -30,11 +30,15 @@
   <%= @list.parsed %>
 </p>
 
+<p>
+  <strong>Pushed at:</strong>
+  <%= @list.pushed_at %>
+</p>
+
+<p>
+  <strong>Readme raw path:</strong>
+  <%= @list.readme_raw_path %>
+</p>
+
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>
-
-<ul>  
-  <% @list.list_entry.each do |entry| %>
-    <li><a href="<%= entry.url %>" target="_blank" > <%= entry.title %> </a>  <%= entry.description %>  </li>
-  <% end %>
-<ul>

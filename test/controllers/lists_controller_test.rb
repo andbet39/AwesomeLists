@@ -17,7 +17,7 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create list" do
     assert_difference('List.count') do
-      post lists_url, params: { list: { content: @list.content, description: @list.description, name: @list.name, parsed: @list.parsed, stars: @list.stars, url: @list.url } }
+      post lists_url, params: { list: { content: @list.content, description: @list.description, name: @list.name, parsed: @list.parsed, pushed_at: @list.pushed_at, readme_raw_path: @list.readme_raw_path, stars: @list.stars, url: @list.url } }
     end
 
     assert_redirected_to list_url(List.last)
@@ -34,7 +34,7 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update list" do
-    patch list_url(@list), params: { list: { content: @list.content, description: @list.description, name: @list.name, parsed: @list.parsed, stars: @list.stars, url: @list.url } }
+    patch list_url(@list), params: { list: { content: @list.content, description: @list.description, name: @list.name, parsed: @list.parsed, pushed_at: @list.pushed_at, readme_raw_path: @list.readme_raw_path, stars: @list.stars, url: @list.url } }
     assert_redirected_to list_url(@list)
   end
 

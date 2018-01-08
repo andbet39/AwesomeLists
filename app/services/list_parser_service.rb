@@ -3,14 +3,14 @@ require 'open-uri'
 class ListParserService
 
     def initialize(params)
-        @list =List.find(params[:list_id])
-
+        @list = params[:list]
+        
     end
 
     def parse
         
-        f = open(@list.url,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
-             
+        f = open( @list.readme_raw_path ,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
+        
         category =""
         subcategory=""
 

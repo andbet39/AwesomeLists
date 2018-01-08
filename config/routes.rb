@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'page/index'
+
   resources :list_entries
   resources :lists
   resources :posts
