@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'api/getlistinfo' => 'api_list#getinfo'
+
+
   get 'page/index'
 
   resources :list_entries

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108122611) do
+ActiveRecord::Schema.define(version: 20180109111104) do
 
   create_table "list_entries", force: :cascade do |t|
     t.string "title"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180108122611) do
     t.datetime "pushed_at"
     t.string "readme_raw_path"
     t.string "readme_view_path"
+    t.text "markdown", limit: 2097152
   end
 
   create_table "posts", force: :cascade do |t|

@@ -5,8 +5,6 @@ class GitRepoService
     def initialize(params)
         @list =params[:list]
         @repo_url  = @list.url
-
-    
     end
 
     def updateInfo
@@ -23,13 +21,13 @@ class GitRepoService
         
         
         @list.readme_raw_path = readme[:download_url]
+        @list.readme_view_path = readme[:html_url]
         @list.stars =  general['stargazers_count']
         @list.pushed_at = general['pushed_at']
+        #@list.markdown = open(readme[:download_url],:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read
 
-        @list.save
-        
-        List.reindex
-        
+        return @list
+                
     end
 
 end

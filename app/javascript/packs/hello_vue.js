@@ -13,18 +13,30 @@ import InstantSearch from 'vue-instantsearch';
 
 import App from '../app.vue'
 import TestPage from '../testpage.vue'
+import NewListPage from '../newlist.vue'
+import axios  from 'axios'
+import VueFormWizard from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+
+var token = $('meta[name="csrf-token"]').attr('content');
 
 const routes = [
   {path: '/', name: 'home', component: TestPage },
+  {path: '/new', name: 'new', component: NewListPage },
 ];
 
 const router = new VueRouter({
   routes
 });
 
+axios.defaults.headers.common['X-CSRF-Token'] = token;
+
+Vue.prototype.$http = axios;
+
 Vue.use(VueRouter)
 Vue.use(TurbolinksAdapter)
 Vue.use(InstantSearch);
+Vue.use(VueFormWizard)
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({

@@ -1,4 +1,6 @@
-require 'open-uri'
+require 'uri'
+require 'net/http'
+require 'openssl'
 
 class ListParserService
 
@@ -9,7 +11,19 @@ class ListParserService
 
     def parse
         
-        f = open( @list.readme_raw_path ,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
+        
+         uri = URI.parse(@list.readme_raw_path)
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
+        
+        http.ciphers = ['RC4-SHA']
+        http.ssl_version='TLSv1'      
+
+        f = http.get(uri.request_uri)
+
+        puts f
+
+       # f = open( @list.readme_raw_path ,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
         
         category =""
         subcategory=""
