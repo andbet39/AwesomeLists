@@ -10,6 +10,10 @@ import TurbolinksAdapter from 'vue-turbolinks';
 import VueRouter from 'vue-router'
 import InstantSearch from 'vue-instantsearch';
 
+import { ApolloClient } from 'apollo-client'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import VueApollo from 'vue-apollo'
 
 import App from '../app.vue'
 import TestPage from '../testpage.vue'
@@ -17,6 +21,8 @@ import NewListPage from '../newlist.vue'
 import axios  from 'axios'
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+import VueMarkdown from 'vue-markdown'
+
 
 var token = $('meta[name="csrf-token"]').attr('content');
 
@@ -29,19 +35,47 @@ const router = new VueRouter({
   routes
 });
 
-axios.defaults.headers.common['X-CSRF-Token'] = token;
+
+const httpLink = new HttpLink({
+  // You should use an absolute URL here
+  uri: 'http://localhost:3000/graphql',
+  credentials: 'same-origin',
+  headers: {
+   'X-CSRF-Token': token
+  }
+})
+
+// Create the apollo client
+const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+  connectToDevTools: true,
+})
+
+
+
+// Install the vue plugin
+Vue.use(VueApollo)
+
+//axios.defaults.headers.common['X-CSRF-Token'] = token;
 
 Vue.prototype.$http = axios;
-
+Vue.use(require('vue-moment'));
 Vue.use(VueRouter)
 Vue.use(TurbolinksAdapter)
 Vue.use(InstantSearch);
 Vue.use(VueFormWizard)
+Vue.use(VueMarkdown)
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
     el: '#main',
     router,
+    apolloProvider,
     components: { App }
   })
 

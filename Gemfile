@@ -33,6 +33,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails'
+gem 'bootstrap'
+
+
+gem 'graphql'
+gem 'graphiql-rails', group: :development
+gem 'devise'
+gem 'seed_dump'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
