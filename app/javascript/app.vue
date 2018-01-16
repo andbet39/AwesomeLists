@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="container">
-      <router-view></router-view>
+  <div id="app">
+       <router-view></router-view>
   </div>
 </template>
 
@@ -8,12 +8,15 @@
 export default {
   data: function () {
     return {
-      message: "Hello Vue!"
+      message: "Hello Vue!",
+      search_string:""
     }
   }
 }
 </script>
 
 <style scoped>
-
+  body{
+    padding-top: 70px;
+  }
 </style>

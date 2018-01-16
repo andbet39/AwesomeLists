@@ -63,3 +63,6 @@ gem "algoliasearch-rails"
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 gem "octokit", "~> 4.0"
+gem 'acts_as_votable', '~> 0.11.1'
+gem 'search_object', '1.2.0'
+gem 'search_object_graphql'

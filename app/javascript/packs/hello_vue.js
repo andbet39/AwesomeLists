@@ -16,8 +16,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
 
 import App from '../app.vue'
-import TestPage from '../testpage.vue'
+import MainPage from '../main_page.vue'
+import ListPage from '../list_page.vue'
 import NewListPage from '../newlist.vue'
+import ListPreview from '../list_preview.vue'
 import axios  from 'axios'
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
@@ -27,7 +29,17 @@ import VueMarkdown from 'vue-markdown'
 var token = $('meta[name="csrf-token"]').attr('content');
 
 const routes = [
-  {path: '/', name: 'home', component: TestPage },
+  {path: '/', name: 'home', component: MainPage,
+  children: [
+    {
+      path: '/',
+      component: ListPage
+    },
+    {
+      path: 'preview/:listId',
+      component: ListPreview,
+      name:'preview'
+    }]},
   {path: '/new', name: 'new', component: NewListPage },
 ];
 

@@ -8,4 +8,7 @@ Types::MutationType = GraphQL::ObjectType.define do
       "Hello World!"
     }
   end
+
+  field :createVote, function: Resolvers::CreateVote.new
+
 end

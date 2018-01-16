@@ -14,5 +14,18 @@ Types::ListType = GraphQL::ObjectType.define do
     field :readme_view_path, !types.String
     field :created_at, !types.String
     field :updated_at, !types.String
+    
+    field :total_votes, !types.Int do
+      resolve -> (obj,args,ctx){
+        obj.votes_for.size
+      }
+    end
+
+   field :votes, !types[Types::VoteType] do
+      resolve -> (obj,args,ctx){
+        obj.votes_for
+      }
+    end
+
 
   end

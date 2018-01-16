@@ -1,5 +1,7 @@
 class List < ApplicationRecord
     include AlgoliaSearch
+    acts_as_votable
+    
     algoliasearch do
         customRanking ['desc(stars)']
     end
